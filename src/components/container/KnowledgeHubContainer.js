@@ -1,0 +1,81 @@
+import Link from "next/link"
+import { Card, CardContent } from "@/components/ui/card"
+import { BookOpenIcon, FileTextIcon, GithubIcon, GraduationCapIcon, NewspaperIcon } from "lucide-react"
+
+const KnowledgeHubContainer = () => {
+  const categories = [
+    {
+      id: "tutorials",
+      name: "Tutorials",
+      description: "Step-by-step guides to learn AI concepts and techniques",
+      icon: <BookOpenIcon className="h-12 w-12 mb-4" />,
+      color: "bg-blue-100 dark:bg-blue-900",
+      textColor: "text-blue-600 dark:text-blue-300",
+      href: "/category/tutorials",
+    },
+    {
+      id: "research-papers",
+      name: "Research Papers",
+      description: "Academic publications on the latest AI advancements",
+      icon: <FileTextIcon className="h-12 w-12 mb-4" />,
+      color: "bg-purple-100 dark:bg-purple-900",
+      textColor: "text-purple-600 dark:text-purple-300",
+      href: "/knowledge-hub/research-papers",
+    },
+    {
+      id: "github-repositories",
+      name: "GitHub Repositories",
+      description: "Open-source code and projects for AI implementation",
+      icon: <GithubIcon className="h-12 w-12 mb-4" />,
+      color: "bg-gray-100 dark:bg-gray-800",
+      textColor: "text-gray-600 dark:text-gray-300",
+      href: "/category/github-repositories",
+    },
+    {
+      id: "courses",
+      name: "Courses",
+      description: "Comprehensive learning paths for AI education",
+      icon: <GraduationCapIcon className="h-12 w-12 mb-4" />,
+      color: "bg-green-100 dark:bg-green-900",
+      textColor: "text-green-600 dark:text-green-300",
+      href: "/category/courses",
+    },
+    {
+      id: "blogs",
+      name: "Blogs",
+      description: "Articles and insights from AI experts and practitioners",
+      icon: <NewspaperIcon className="h-12 w-12 mb-4" />,
+      color: "bg-orange-100 dark:bg-orange-900",
+      textColor: "text-orange-600 dark:text-orange-300",
+      href: "/category/blogs",
+    },
+  ]
+
+  return (
+    <div className="container mx-auto py-12">
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4">AI Knowledge Hub</h1>
+        <p className="text-xl text-muted-foreground">Explore our curated collection of AI learning materials</p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {categories.map((category) => (
+          <Link href={category.href} key={category.id} className="block">
+            <Card
+              className={`h-full transition-transform duration-300 hover:scale-105 hover:shadow-lg ${category.color}`}
+            >
+              <CardContent className="flex flex-col items-center justify-center p-8 text-center h-full">
+                <div className={category.textColor}>{category.icon}</div>
+                <h2 className="text-2xl font-bold mb-2">{category.name}</h2>
+                <p className="text-muted-foreground">{category.description}</p>
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default KnowledgeHubContainer
+
