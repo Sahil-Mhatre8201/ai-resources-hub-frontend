@@ -20,7 +20,7 @@ const KnowledgeHubContainer = () => {
       icon: <FileTextIcon className="h-12 w-12 mb-4" />,
       color: "bg-purple-100 dark:bg-purple-900",
       textColor: "text-purple-600 dark:text-purple-300",
-      href: "/knowledge-hub/research-papers",
+      href: "/knowledge-base/research-papers",
     },
     {
       id: "github-repositories",
@@ -29,7 +29,7 @@ const KnowledgeHubContainer = () => {
       icon: <GithubIcon className="h-12 w-12 mb-4" />,
       color: "bg-gray-100 dark:bg-gray-800",
       textColor: "text-gray-600 dark:text-gray-300",
-      href: "/category/github-repositories",
+      href: "/knowledge-base/github",
     },
     {
       id: "courses",
