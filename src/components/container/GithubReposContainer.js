@@ -33,7 +33,7 @@ const GithubReposContainer = () => {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-bold">GitHub Repositories</h2>
+      <h2 className="text-2xl font-bold">Trending GitHub Repositories</h2>
       <div className="flex-1">
         <SearchResultsList results={data} />
       </div>
