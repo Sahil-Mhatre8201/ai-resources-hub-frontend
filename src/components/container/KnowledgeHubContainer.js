@@ -47,7 +47,7 @@ const KnowledgeHubContainer = () => {
       icon: <NewspaperIcon className="h-12 w-12 mb-4" />,
       color: "bg-orange-100 dark:bg-orange-900",
       textColor: "text-orange-600 dark:text-orange-300",
-      href: "/category/blogs",
+      href: "/knowledge-base/blogs",
     },
   ]
 
