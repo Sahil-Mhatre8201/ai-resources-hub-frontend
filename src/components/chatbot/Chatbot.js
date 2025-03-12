@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import ChatButton from "./ChatButton"
 import ChatInterface from "./ChatInterface"
 
@@ -9,6 +9,12 @@ const Chatbot = ({ apiEndpoint = "http://localhost:8000/chat" }) => {
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  // Only render on client-side to avoid hydration issues
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleChat = () => {
     setIsOpen(!isOpen)
@@ -58,6 +64,8 @@ const Chatbot = ({ apiEndpoint = "http://localhost:8000/chat" }) => {
       setIsLoading(false)
     }
   }
+
+  if (!mounted) return null
 
   return (
     <>

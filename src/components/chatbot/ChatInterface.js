@@ -25,16 +25,16 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
   }
 
   return (
-    <div className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] bg-background border rounded-lg shadow-xl flex flex-col z-50">
-      <div className="p-4 border-b">
-        <h3 className="font-medium">AI Assistant</h3>
-        <p className="text-xs text-muted-foreground">Ask me anything about AI resources</p>
+    <div className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] bg-white border rounded-lg shadow-xl flex flex-col z-[1000]">
+      <div className="p-4 border-b bg-white">
+        <h3 className="font-medium text-gray-900">AI Assistant</h3>
+        <p className="text-xs text-gray-500">Ask me anything about AI resources</p>
       </div>
 
-      <div className="flex-1 p-4 overflow-y-auto">
+      <div className="flex-1 p-4 overflow-y-auto bg-white">
         {messages.length === 0 ? (
           <div className="h-full flex items-center justify-center text-center">
-            <div className="text-muted-foreground">
+            <div className="text-gray-500">
               <p className="mb-2">👋 Hi there!</p>
               <p>How can I help you find AI resources today?</p>
             </div>
@@ -44,15 +44,15 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
         )}
         {isLoading && (
           <div className="flex justify-start mb-4">
-            <div className="bg-muted px-4 py-2 rounded-lg">
+            <div className="bg-gray-100 px-4 py-2 rounded-lg">
               <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce"></div>
+                <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"></div>
                 <div
-                  className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce"
+                  className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"
                   style={{ animationDelay: "0.2s" }}
                 ></div>
                 <div
-                  className="w-2 h-2 rounded-full bg-muted-foreground animate-bounce"
+                  className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"
                   style={{ animationDelay: "0.4s" }}
                 ></div>
               </div>
@@ -62,7 +62,7 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
         <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-4 border-t">
+      <div className="p-4 border-t bg-white">
         <form
           onSubmit={(e) => {
             e.preventDefault()
@@ -76,9 +76,14 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
             onKeyDown={handleKeyDown}
             placeholder="Type your message..."
             disabled={isLoading}
-            className="flex-1"
+            className="flex-1 text-gray-900 placeholder:text-gray-400"
           />
-          <Button type="submit" size="icon" disabled={isLoading || !inputValue.trim()}>
+          <Button
+            type="submit"
+            size="icon"
+            disabled={isLoading || !inputValue.trim()}
+            className="bg-primary hover:bg-primary/90"
+          >
             <SendIcon className="h-4 w-4" />
             <span className="sr-only">Send message</span>
           </Button>
