@@ -25,7 +25,7 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
   }
 
   return (
-    <div className="fixed bottom-24 right-6 w-80 sm:w-96 h-[500px] bg-white border rounded-lg shadow-xl flex flex-col z-[1000]">
+    <div className="fixed bottom-24 right-6 w-96 sm:w-[450px] md:w-[500px] h-[600px] bg-white border rounded-lg shadow-xl flex flex-col z-[1000]">
       <div className="p-4 border-b bg-white">
         <h3 className="font-medium text-gray-900">AI Assistant</h3>
         <p className="text-xs text-gray-500">Ask me anything about AI resources</p>
@@ -40,24 +40,9 @@ const ChatInterface = ({ messages, inputValue, setInputValue, handleSendMessage,
             </div>
           </div>
         ) : (
-          messages.map((msg, index) => <ChatMessage key={index} message={msg.content} isUser={msg.role === "user"} />)
-        )}
-        {isLoading && (
-          <div className="flex justify-start mb-4">
-            <div className="bg-gray-100 px-4 py-2 rounded-lg">
-              <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"></div>
-                <div
-                  className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"
-                  style={{ animationDelay: "0.2s" }}
-                ></div>
-                <div
-                  className="w-2 h-2 rounded-full bg-gray-400 animate-bounce"
-                  style={{ animationDelay: "0.4s" }}
-                ></div>
-              </div>
-            </div>
-          </div>
+          messages.map((msg, index) => (
+            <ChatMessage key={index} message={msg.content} isUser={msg.role === "user"} isStreaming={msg.isStreaming} />
+          ))
         )}
         <div ref={messagesEndRef} />
       </div>
