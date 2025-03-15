@@ -1,7 +1,10 @@
 import HomeContainer from "@/components/container";
+import { withAuth } from "@/utils/auth";
 
-export default function Home() {
+function Home() {
   return (
     <HomeContainer />
   )
 }
+
+export default Home
