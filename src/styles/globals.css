@@ -234,4 +234,34 @@ body {
   margin-bottom: 0.5rem;
 }
 
+[data-sonner-toaster][data-theme="dark"] {
+  --toast-success: hsl(var(--primary));
+  --toast-error: hsl(var(--destructive));
+  --toast-text: hsl(var(--foreground));
+  --toast-border: hsl(var(--border));
+  --toast-background: hsl(var(--background));
+}
+
+[data-sonner-toaster][data-theme="light"] {
+  --toast-success: hsl(var(--primary));
+  --toast-error: hsl(var(--destructive));
+  --toast-text: hsl(var(--foreground));
+  --toast-border: hsl(var(--border));
+  --toast-background: hsl(var(--background));
+}
+
+/* Make sure success toasts have good contrast */
+[data-sonner-toast][data-type="success"] {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+}
+
+/* Make sure error toasts have good contrast */
+[data-sonner-toast][data-type="error"] {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+}
+
 

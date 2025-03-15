@@ -4,6 +4,7 @@ import Chatbot from "@/components/chatbot/Chatbot";
 import { isAuthenticated } from "@/utils/auth"
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Toaster } from "@/components/ui/sonner"
 
 // List of routes that don't require authentication
 const publicRoutes = ["/login", "/signup", "/forgot-password"]
@@ -49,6 +50,16 @@ export default function App({ Component, pageProps }) {
     <SearchProvider>
       <Component {...pageProps} />
       <Chatbot apiEndpoint="http://127.0.0.1:8000/chat" />
+      <Toaster
+        theme="system"
+        richColors
+        closeButton
+        style={{
+          "--toast-text": "hsl(var(--foreground))",
+          "--toast-border": "hsl(var(--border))",
+          "--toast-background": "hsl(var(--background))",
+        }}
+      />
     </SearchProvider>
   );
 }
