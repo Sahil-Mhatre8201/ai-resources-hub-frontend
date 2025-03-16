@@ -155,7 +155,7 @@ const RepoDetails = () => {
                 h3: ({ node, ...props }) => (
                   <h3 className="text-xl font-semibold mt-2 mb-1" {...props} />
                 ),
-                a: ({ href, children, ...props }) => {
+                a: ({ href = "", children, ...props }) => {
                   const youtubeMatch =
                     href.match(
                       /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([\w-]+)/
