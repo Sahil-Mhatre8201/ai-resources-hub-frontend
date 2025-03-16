@@ -38,7 +38,7 @@ const KnowledgeHubContainer = () => {
       icon: <GraduationCapIcon className="h-12 w-12 mb-4" />,
       color: "bg-green-100 dark:bg-green-900",
       textColor: "text-green-600 dark:text-green-300",
-      href: "/category/courses",
+      href: "/knowledge-base/courses",
     },
     {
       id: "blogs",

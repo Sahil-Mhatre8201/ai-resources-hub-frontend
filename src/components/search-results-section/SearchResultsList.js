@@ -1,6 +1,7 @@
 import RepositoryCard from "./RepositoryCard"
 import ArxivPaperCard from "./ArxivPaperCard"
 import BlogCard from "./BlogCard"
+import CourseCard from "./CourseCard"
 
 const SearchResultsList = ({ results }) => {
   const renderResultCard = (result) => {
@@ -11,6 +12,8 @@ const SearchResultsList = ({ results }) => {
         return <ArxivPaperCard key={result.id} paper={result} />
       case "blog":
           return <BlogCard blog={result} />
+      case "courses":
+        return <CourseCard course={result} />
       default:
         return <div key={result.id || result.full_name}>Unsupported resource type</div>
     }
