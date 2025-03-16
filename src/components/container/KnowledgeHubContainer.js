@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookOpenIcon, FileTextIcon, GithubIcon, GraduationCapIcon, NewspaperIcon } from "lucide-react"
+import { BookOpenIcon, FileTextIcon, GithubIcon, GraduationCapIcon, NewspaperIcon, UsersIcon } from "lucide-react"
 
 const KnowledgeHubContainer = () => {
   const categories = [
@@ -48,6 +48,15 @@ const KnowledgeHubContainer = () => {
       color: "bg-orange-100 dark:bg-orange-900",
       textColor: "text-orange-600 dark:text-orange-300",
       href: "/knowledge-base/blogs",
+    },
+    {
+      id: "by-the-community",
+      name: "By the Community",
+      description: "Valuable resources contributed by our community members",
+      icon: <UsersIcon className="h-12 w-12 mb-4" />,
+      color: "bg-pink-100 dark:bg-pink-900",
+      textColor: "text-pink-600 dark:text-pink-300",
+      href: "/knowledge-base/by-the-community",
     },
   ]
 
