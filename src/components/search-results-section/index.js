@@ -101,6 +101,14 @@ const SearchResultsSection = ({ data = [] }) => {
                 />
                 <Label htmlFor="blogs">Courses</Label>
             </div>
+            <div className="flex items-center space-x-2">
+                <Checkbox
+                id="courses"
+                checked={filters.courses}
+                onCheckedChange={() => handleFilterChange("handbook")}
+                />
+                <Label htmlFor="blogs">Handbooks</Label>
+            </div>
             </div>
             <div className="flex items-center space-x-2">
             <Button type="button" className="w-full" onClick={handleApplyFilters}>

@@ -7,11 +7,11 @@ const KnowledgeHubContainer = () => {
     {
       id: "tutorials",
       name: "Tutorials",
-      description: "Step-by-step guides to learn AI concepts and techniques",
+      description: "Handbooks and notes with step-by-step guides to learn AI concepts and techniques",
       icon: <BookOpenIcon className="h-12 w-12 mb-4" />,
       color: "bg-blue-100 dark:bg-blue-900",
       textColor: "text-blue-600 dark:text-blue-300",
-      href: "/category/tutorials",
+      href: "/knowledge-base/handbooks",
     },
     {
       id: "research-papers",
