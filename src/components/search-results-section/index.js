@@ -21,6 +21,8 @@ const SearchResultsSection = ({ data = [] }) => {
     github: false,
     research_papers: false,
     blogs: false,
+    courses: false,
+    handbook: false
   });
   const { setSearchResults, query } = useSearch();
   const [loading, setLoading] = useState(false);
@@ -87,8 +89,8 @@ const SearchResultsSection = ({ data = [] }) => {
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
-                id="courses"
-                checked={filters.courses}
+                id="blogs"
+                checked={filters.blogs}
                 onCheckedChange={() => handleFilterChange("blogs")}
                 />
                 <Label htmlFor="blogs">Blogs</Label>
@@ -99,15 +101,15 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.courses}
                 onCheckedChange={() => handleFilterChange("courses")}
                 />
-                <Label htmlFor="blogs">Courses</Label>
+                <Label htmlFor="courses">Courses</Label>
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
-                id="courses"
-                checked={filters.courses}
+                id="handbooks"
+                checked={filters.handbook}
                 onCheckedChange={() => handleFilterChange("handbook")}
                 />
-                <Label htmlFor="blogs">Handbooks</Label>
+                <Label htmlFor="handbooks">Handbooks</Label>
             </div>
             </div>
             <div className="flex items-center space-x-2">
