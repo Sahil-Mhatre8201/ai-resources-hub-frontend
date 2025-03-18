@@ -29,7 +29,7 @@ const RepoDetails = () => {
   useEffect(() => {
     if (owner && repo) {
       axios
-        .get(`http://127.0.0.1:8000/repo-details?owner=${owner}&repo=${repo}`)
+        .get(`https://ai-resources-hub-backend.onrender.com/repo-details?owner=${owner}&repo=${repo}`)
         .then((res) => {
           setRepoDetails(res.data);
           setLoading(false);

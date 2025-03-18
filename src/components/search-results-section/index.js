@@ -53,7 +53,7 @@ const SearchResultsSection = ({ data = [] }) => {
     );
     axios
       .get(
-        `http://127.0.0.1:8000/get-filtered-resources?q=${query}&filters=${filtersToPass}&page=${page}&max_results=${maxResults}`
+        `https://ai-resources-hub-backend.onrender.com/get-filtered-resources?q=${query}&filters=${filtersToPass}&page=${page}&max_results=${maxResults}`
       )
       .then((res) => {
         setSearchResults(res?.data);

@@ -13,7 +13,7 @@ const CoursesContainer = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/courses?query=ai&max_results=${maxResults}&page=${pageNum}`
+        `https://ai-resources-hub-backend.onrender.com/courses?query=ai&max_results=${maxResults}&page=${pageNum}`
       );
       setData(res?.data?.results);
     } catch (err) {

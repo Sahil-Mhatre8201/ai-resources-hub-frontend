@@ -49,7 +49,7 @@ export default function App({ Component, pageProps }) {
   return (
     <SearchProvider>
       <Component {...pageProps} />
-      <Chatbot apiEndpoint="http://127.0.0.1:8000/chat" />
+      <Chatbot apiEndpoint="https://ai-resources-hub-backend.onrender.com/chat" />
       <Toaster
         theme="system"
         richColors

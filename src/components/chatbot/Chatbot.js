@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import ChatButton from "./ChatButton"
 import ChatInterface from "./ChatInterface"
 
-const Chatbot = ({ apiEndpoint = "http://localhost:8000/chat" }) => {
+const Chatbot = ({ apiEndpoint = "https://ai-resources-hub-backend.onrender.com/chat" }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([])
   const [inputValue, setInputValue] = useState("")

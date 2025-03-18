@@ -31,7 +31,7 @@ const BookmarksList = () => {
 
   // Get auth token from cookies or localStorage
   const getAuthToken = () => {
-    return Cookies.get("auth_token") || localStorage.getItem("auth_token")
+      return Cookies.get("auth_token") || localStorage.getItem("auth_token") || Cookies.get("user_id") || localStorage.getItem("user_id")
   }
 
   // Fetch bookmarks

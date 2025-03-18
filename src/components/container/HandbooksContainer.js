@@ -13,7 +13,7 @@ const HandbooksContainer = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/ai-handbooks`
+        `https://ai-resources-hub-backend.onrender.com/ai-handbooks`
       );
       setData(res?.data?.handbooks);
     } catch (err) {

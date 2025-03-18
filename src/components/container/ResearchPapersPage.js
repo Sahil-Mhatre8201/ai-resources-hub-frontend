@@ -13,7 +13,7 @@ const ResearchPapersPage = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/search-arxiv-papers?q=artificial intelligence&max_results=${maxResults}&page=${pageNum}`
+        `https://ai-resources-hub-backend.onrender.com/search-arxiv-papers?q=artificial intelligence&max_results=${maxResults}&page=${pageNum}`
       );
       setData(res?.data?.papers);
     } catch (err) {

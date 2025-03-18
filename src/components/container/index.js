@@ -23,7 +23,7 @@ const HomeContainer = () => {
 
     axios
       .get(
-        `http://127.0.0.1:8000/v2-get-resources?q=${searchInputRef?.current?.value}`
+        `https://ai-resources-hub-backend.onrender.com/v2-get-resources?q=${searchInputRef?.current?.value}`
       )
       .then((res) => {
         setLoading(false);

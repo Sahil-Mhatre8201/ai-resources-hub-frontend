@@ -13,7 +13,7 @@ const BlogsContainer = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://127.0.0.1:8000/search-blogs?q=artificial intelligence&max_results=${maxResults}`
+        `https://ai-resources-hub-backend.onrender.com/search-blogs?q=artificial intelligence&max_results=${maxResults}`
       );
       setData(res?.data?.blogs);
     } catch (err) {
