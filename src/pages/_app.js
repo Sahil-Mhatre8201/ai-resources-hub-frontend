@@ -5,6 +5,7 @@ import { isAuthenticated } from "@/utils/auth"
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { Toaster } from "@/components/ui/sonner"
+import { Header } from "@/components/header/header";
 
 // List of routes that don't require authentication
 const publicRoutes = ["/login", "/signup", "/forgot-password"]
@@ -48,7 +49,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <SearchProvider>
-      <Component {...pageProps} />
+      <Header />
+      <div className="w-4/5 mx-auto">
+
+        <Component {...pageProps} />
+      </div>
       <Chatbot apiEndpoint="https://ai-resources-hub-backend.onrender.com/chat" />
       <Toaster
         theme="system"
