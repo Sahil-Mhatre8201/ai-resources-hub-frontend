@@ -9,8 +9,7 @@ const AllResourcesContainer = () => {
 
   return (
     <div>
-      AllResourcesContainer
-      <div>
+      <div className="mt-8">
         {searchResults?.results && (
           <SearchResultsSection data={searchResults?.results} />
         )}

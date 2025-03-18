@@ -44,12 +44,12 @@ export function Header() {
     },
     {
       name: "Submit a Resource",
-      href: "/submit-resource",
+      href: "/upload-resource",
       icon: <PlusCircle className="h-4 w-4 mr-2" />,
     },
     {
       name: "My Favourites",
-      href: "/favourites",
+      href: "/my-bookmarks",
       icon: <Heart className="h-4 w-4 mr-2" />,
     },
   ]

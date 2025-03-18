@@ -16,6 +16,10 @@ const HomeContainer = () => {
 
   const searchInputRef = useRef(null);
 
+   // San Jose State University colors
+   const sjsuBlue = "#0055A2"
+   const sjsuGold = "#E5A823"
+
   const handleSearchBtnClick = (e) => {
     console.log("Search string", searchInputRef?.current?.value);
     setQuery(searchInputRef?.current?.value)
@@ -38,15 +42,28 @@ const HomeContainer = () => {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <div className="flex flex-col">
+              <span className="font-bold text-6xl">
+                <span style={{ color: sjsuBlue }}>Spartan</span>
+                <span style={{ color: sjsuGold }}> AI Hub</span>
+              </span>
+            </div>
       <div className="w-full max-w-xl mx-auto text-center">
+        
         <div className="mb-8">
-          <Image
+          {/* <Image
             src="/logo.svg"
             alt="Logo"
             width={150}
             height={50}
             className="mx-auto"
-          />
+          /> */}
+           {/* <div className="flex flex-col">
+              <span className="font-bold text-xl">
+                <span style={{ color: sjsuBlue }}>Spartan</span>
+                <span style={{ color: sjsuGold }}> AI Hub</span>
+              </span>
+            </div> */}
         </div>
         <Form className="space-y-4">
           <Input
