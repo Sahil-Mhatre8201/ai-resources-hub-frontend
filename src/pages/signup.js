@@ -2,8 +2,8 @@
 
 import React from "react"
 import { useRouter } from "next/router"
-import LoginForm from "@/components/auth/LoginForm"
 import { isAuthenticated } from "@/utils/auth"
+import SignupForm from "@/components/auth/SignUpForm"
 
 export default function LoginPage() {
   const router = useRouter()
@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4">
-      <LoginForm />
+      <SignupForm />
     </div>
   )
 }
