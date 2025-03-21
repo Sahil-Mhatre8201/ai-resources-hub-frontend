@@ -1,7 +1,7 @@
-Here’s a complete **README.md** file that you can directly copy and paste into your repository:  
+
 
 ```md
-# AI Resources Hub - Frontend
+# Spartan AI Hub - Frontend
 
 This is the frontend for AI Resources Hub, a platform that helps users discover and bookmark AI-related resources such as GitHub repositories, research papers, and blogs.
 
