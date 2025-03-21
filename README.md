@@ -1,40 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+Here’s a complete **README.md** file that you can directly copy and paste into your repository:  
 
-## Getting Started
+```md
+# AI Resources Hub - Frontend
 
-First, run the development server:
+This is the frontend for AI Resources Hub, a platform that helps users discover and bookmark AI-related resources such as GitHub repositories, research papers, and blogs.
 
-```bash
+## 🚀 Getting Started
+
+Follow these steps to set up and run the project locally.
+
+### 📌 Prerequisites
+
+- Install **Node.js** (latest LTS version recommended)
+- Ensure **npm** or **yarn** is installed
+
+### 📥 Installation & Setup
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/YOUR_GITHUB_USERNAME/ai-resources-hub-frontend.git
+   ```
+
+2. Navigate into the project directory:
+   ```sh
+   cd ai-resources-hub-frontend
+   ```
+
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+### ▶️ Running the Development Server
+
+Start the Next.js development server:
+
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at **[http://localhost:3000](http://localhost:3000)**.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### ⚙️ Environment Variables
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Create a `.env.local` file in the root directory and add the necessary environment variables. Example:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```sh
+NEXT_PUBLIC_API_BASE_URL=https://ai-resources-hub-backend.onrender.com
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+### 🛠️ Troubleshooting
 
-To learn more about Next.js, take a look at the following resources:
+- **CORS Errors:** Ensure your backend allows requests from the deployed frontend URL.
+- **.env Variables Not Loading?** Restart the server after modifying `.env.local`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
