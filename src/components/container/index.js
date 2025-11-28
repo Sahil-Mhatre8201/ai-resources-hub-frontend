@@ -16,17 +16,6 @@ const HomeContainer = () => {
 
   const searchInputRef = useRef(null);
 
-<<<<<<< HEAD
-   // San Jose State University colors
-   const sjsuBlue = "#0055A2"
-   const sjsuGold = "#E5A823"
-
-  const handleSearchBtnClick = (e) => {
-    console.log("Search string", searchInputRef?.current?.value);
-    setQuery(searchInputRef?.current?.value)
-    setLoading(true);
-
-=======
    // San Jose State University brand colors
    const sjsuBlue = "#0055A2"
    const sjsuGold = "#E5A823"
@@ -40,20 +29,11 @@ const HomeContainer = () => {
     setLoading(true); // Set loading state to true while fetching
 
     // Make a GET request to the backend API with the search query
->>>>>>> 764d139 (Fix API URL configuration and add proper error handling for courses endpoint)
     axios
       .get(
         `https://ai-resources-hub-backend.onrender.com/v2-get-resources?q=${searchInputRef?.current?.value}`
       )
       .then((res) => {
-<<<<<<< HEAD
-        setLoading(false);
-        console.log("res", res);
-        setSearchResults(res?.data)
-        router.push("/resources")
-      })
-      .catch((err) => {
-=======
         setLoading(false); // Set loading state to false after response
         console.log("res", res);
         // Update the search results in context with the data from the API response
@@ -63,7 +43,6 @@ const HomeContainer = () => {
       })
       .catch((err) => {
         // Handle any errors that occur during the API call
->>>>>>> 764d139 (Fix API URL configuration and add proper error handling for courses endpoint)
         console.log("Error", err);
       });
   };
