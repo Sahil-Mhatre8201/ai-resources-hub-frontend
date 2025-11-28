@@ -1,60 +1,54 @@
 import "@/styles/globals.css";
 import { SearchProvider } from "@/context/SearchContext";
 import Chatbot from "@/components/chatbot/Chatbot";
-import { isAuthenticated } from "@/utils/auth"
+import { isAuthenticated } from "@/utils/auth";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Toaster } from "@/components/ui/sonner"
+import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/header/header";
 
-// List of routes that don't require authentication
-const publicRoutes = ["/login", "/signup", "/forgot-password"]
+// PWA components
+import InstallPrompt from "@/components/InstallPrompt";
+import IOSInstallMessage from "@/components/IOSInstallMessage";
+
+// Public routes
+const PUBLIC_ROUTES = ["/login", "/signup", "/forgot-password"];
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter()
+  const router = useRouter();
 
+  // Authentication guard
   useEffect(() => {
-    // Check authentication on route change
     const handleRouteChange = (url) => {
-      // Extract the path from the URL (remove query params)
-      const path = url.split("?")[0]
+      const path = url.split("?")[0];
+      const isPublic = PUBLIC_ROUTES.includes(path);
 
-      // Check if the route is public
-      const isPublicRoute = publicRoutes.includes(path)
+      const authenticated = isAuthenticated();
+      console.log("[Auth] Navigated to:", path, "Public:", isPublic, "Auth:", authenticated);
 
-      // Only check auth if we're in the browser
-      if (typeof window !== "undefined") {
-        const authenticated = isAuthenticated()
-
-        console.log("Route change to:", path, "Public:", isPublicRoute, "Authenticated:", authenticated)
-
-        // If not public and user is not authenticated, redirect to login
-        if (!isPublicRoute && !authenticated) {
-          router.push("/login")
-        }
+      if (!isPublic && !authenticated) {
+        console.log("[Auth] Redirecting user to login");
+        router.push("/login");
       }
-    }
+    };
 
-    // Run once on initial load
-    handleRouteChange(router.pathname)
+    handleRouteChange(router.pathname);
+    router.events.on("routeChangeStart", handleRouteChange);
 
-    // Add event listener for route changes
-    router.events.on("routeChangeStart", handleRouteChange)
-
-    // Clean up event listener
-    return () => {
-      router.events.off("routeChangeStart", handleRouteChange)
-    }
-  }, [router])
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router]);
 
   return (
     <SearchProvider>
       <Header />
-      <div className="w-4/5 mx-auto">
 
+      {/* MAIN CONTENT */}
+      <div className="w-4/5 mx-auto">
         <Component {...pageProps} />
       </div>
+
       <Chatbot apiEndpoint="https://ai-resources-hub-backend.onrender.com/chat" />
+
       <Toaster
         theme="system"
         richColors
@@ -65,6 +59,10 @@ export default function App({ Component, pageProps }) {
           "--toast-background": "hsl(var(--background))",
         }}
       />
+
+      {/* PWA INSTALL BUTTONS MUST BE OUTSIDE ANY ROUTER GUARDS */}
+      <InstallPrompt />
+      <IOSInstallMessage />
     </SearchProvider>
   );
 }
