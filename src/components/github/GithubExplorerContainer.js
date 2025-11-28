@@ -103,6 +103,8 @@ const GitHubExplorerContainer = () => {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 className="pl-10 text-sm sm:text-base"
+                style={{ fontSize: "16px" }}
+                onFocus={(e) => e.target.style.fontSize = "16px"}
               />
             </div>
             <Button type="submit" disabled={isLoading || !inputValue.trim()} className="w-full sm:w-auto text-sm sm:text-base">

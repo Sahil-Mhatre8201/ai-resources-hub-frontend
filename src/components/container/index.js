@@ -78,7 +78,9 @@ const HomeContainer = () => {
             type="search"
             placeholder="Search..."
             name="q"
-            className="w-full text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3"
+            className="w-full text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3 text-base"
+            style={{ fontSize: "16px" }}
+            onFocus={(e) => e.target.style.fontSize = "16px"}
           />
           <Button
             loading={loading}

@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Disable zoom on input focus and prevent pinch zoom */
+html {
+  touch-action: manipulation;
+}
+
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+  font-size: 16px !important;
+  touch-action: manipulation;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+  font-size: 16px !important;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
