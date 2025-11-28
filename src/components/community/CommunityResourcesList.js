@@ -103,9 +103,9 @@ const CommunityResourcesList = () => {
     return (
       <Alert variant="destructive" className="mb-6">
         <AlertCircle className="h-4 w-4" />
-        <AlertDescription>
+        <AlertDescription className="text-xs sm:text-sm">
           Error loading community resources: {error}
-          <Button variant="outline" size="sm" className="ml-4" onClick={fetchApprovedResources}>
+          <Button variant="outline" size="sm" className="ml-2 sm:ml-4 text-xs sm:text-sm" onClick={fetchApprovedResources}>
             Retry
           </Button>
         </AlertDescription>
@@ -117,7 +117,7 @@ const CommunityResourcesList = () => {
     <div className="w-full">
       {isLoading ? (
         // Loading skeletons
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[...Array(6)].map((_, i) => (
             <Card key={i} className="overflow-hidden">
               <CardHeader className="pb-2">
@@ -133,13 +133,13 @@ const CommunityResourcesList = () => {
       ) : resources.length === 0 ? (
         // Empty state
         <Card className="w-full">
-          <CardContent className="flex flex-col items-center justify-center py-12 text-center">
-            <BookOpenIcon className="h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-xl font-medium mb-2">No community resources yet</h3>
-            <p className="text-muted-foreground mb-6">
+          <CardContent className="flex flex-col items-center justify-center py-10 sm:py-12 text-center px-4 sm:px-6">
+            <BookOpenIcon className="h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-4" />
+            <h3 className="text-base sm:text-xl font-medium mb-2">No community resources yet</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground mb-6">
               Be the first to contribute a resource to our community collection!
             </p>
-            <Button asChild>
+            <Button asChild className="text-xs sm:text-sm">
               <Link href="/upload-resource">Submit a Resource</Link>
             </Button>
           </CardContent>
@@ -147,7 +147,7 @@ const CommunityResourcesList = () => {
       ) : (
         // Resources grid
         <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {resources.map((resource) => (
               <ResourceCard
                 key={resource.id}
@@ -159,9 +159,9 @@ const CommunityResourcesList = () => {
           </div>
 
           {/* Refresh button */}
-          <div className="flex justify-center mt-10">
-            <Button variant="outline" onClick={fetchApprovedResources} className="gap-2">
-              <RefreshCwIcon className="h-4 w-4" />
+          <div className="flex justify-center mt-8 sm:mt-10">
+            <Button variant="outline" onClick={fetchApprovedResources} className="gap-2 text-xs sm:text-sm">
+              <RefreshCwIcon className="h-3 w-3 sm:h-4 sm:w-4" />
               Refresh Resources
             </Button>
           </div>
@@ -189,13 +189,13 @@ const ResourceCard = ({ resource, getResourceIcon, getResourceColor }) => {
       onClick={hasUrl ? handleCardClick : undefined}
     >
       <CardHeader className="pb-2">
-        <Badge className={`w-max mb-2 ${getResourceColor(resource.resource_type)}`}>
-          <span className="flex items-center">
+        <Badge className={`w-max mb-2 ${getResourceColor(resource.resource_type)} text-xs sm:text-sm`}>
+          <span className="flex items-center gap-1">
             {getResourceIcon(resource.resource_type)}
-            <span className="ml-1">{resource.resource_type}</span>
+            <span className="hidden sm:inline">{resource.resource_type}</span>
           </span>
         </Badge>
-        <CardTitle className="text-lg">
+        <CardTitle className="text-sm sm:text-lg line-clamp-2">
           {hasUrl ? (
             <Link
               href={resource.url}
@@ -205,7 +205,7 @@ const ResourceCard = ({ resource, getResourceIcon, getResourceColor }) => {
               onClick={(e) => e.stopPropagation()} // Prevent card click when clicking the link
             >
               {resource.title}
-              <ExternalLinkIcon className="h-4 w-4 inline opacity-70 group-hover:opacity-100" />
+              <ExternalLinkIcon className="h-3 w-3 sm:h-4 sm:w-4 inline opacity-70 group-hover:opacity-100 flex-shrink-0" />
             </Link>
           ) : (
             resource.title
@@ -214,12 +214,12 @@ const ResourceCard = ({ resource, getResourceIcon, getResourceColor }) => {
       </CardHeader>
       <CardContent className="flex-grow">
         {resource.description ? (
-          <p className="text-muted-foreground text-sm">{resource.description}</p>
+          <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">{resource.description}</p>
         ) : (
-          <p className="text-muted-foreground text-sm italic">No description provided</p>
+          <p className="text-muted-foreground text-xs sm:text-sm italic">No description provided</p>
         )}
       </CardContent>
-      <div className="px-6 pb-4 mt-auto flex justify-between items-center">
+      <div className="px-4 sm:px-6 pb-3 sm:pb-4 mt-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div className="text-xs text-muted-foreground">Contributed by user #{resource.user_id}</div>
         {hasUrl && <div className="text-xs text-primary">Click to open</div>}
       </div>

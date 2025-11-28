@@ -48,16 +48,16 @@ const HomeContainer = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="flex flex-col">
-              <span className="font-bold text-6xl">
+    <main className="flex min-h-screen flex-col items-center justify-center px-3 sm:px-4 py-8 sm:py-16 md:py-24">
+      <div className="flex flex-col items-center w-full">
+              <span className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center">
                 <span style={{ color: sjsuBlue }}>Spartan</span>
                 <span style={{ color: sjsuGold }}> AI Hub</span>
               </span>
             </div>
-      <div className="w-full max-w-xl mx-auto text-center">
+      <div className="w-full max-w-xl mx-auto text-center mt-6 sm:mt-8 md:mt-10">
         
-        <div className="mb-8">
+        <div className="mb-6 sm:mb-8">
           {/* <Image
             src="/logo.svg"
             alt="Logo"
@@ -78,17 +78,17 @@ const HomeContainer = () => {
             type="search"
             placeholder="Search..."
             name="q"
-            className="w-full"
+            className="w-full text-sm sm:text-base px-3 sm:px-4 py-2 sm:py-3"
           />
           <Button
             loading={loading}
             type="button"
             onClick={handleSearchBtnClick}
-            className="w-full"
+            className="w-full text-sm sm:text-base py-2 sm:py-3"
           >
             {loading ? (
               <>
-                <Loader2 className="animate-spin mr-2" />
+                <Loader2 className="animate-spin mr-2 h-4 w-4" />
                 Fetching Results...
               </>
             ) : (

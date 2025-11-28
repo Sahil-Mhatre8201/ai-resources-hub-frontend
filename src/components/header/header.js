@@ -56,9 +56,9 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-black dark:border-gray-800">
-      <div className="container flex h-16 items-center justify-between px-4">
-        <div className="flex items-center gap-3 pl-4">
-          <Link href="/" className="flex items-center space-x-3">
+      <div className="w-full flex h-14 sm:h-16 items-center justify-between px-3 sm:px-4 lg:px-6">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Link href="/" className="flex items-center space-x-2 sm:space-x-3">
             {/* Logo image option */}
             {/* Uncomment and replace with your actual logo path */}
             {/* <img 
@@ -71,66 +71,68 @@ export function Header() {
 
             {/* Fallback to text if no image is provided */}
             <div className="flex flex-col">
-              <span className="font-bold text-xl">
+              <span className="font-bold text-base sm:text-lg lg:text-xl">
                 <span style={{ color: sjsuBlue }}>Spartan</span>
-                <span style={{ color: sjsuGold }}> AI Hub</span>
+                <span style={{ color: sjsuGold }}> AI</span>
+              </span>
+              <span className="hidden sm:inline font-bold text-base sm:text-lg lg:text-xl">
+                <span style={{ color: sjsuGold }}>Hub</span>
               </span>
             </div>
           </Link>
         </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-1 lg:gap-6">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={cn(
-                "flex items-center text-sm font-medium transition-colors",
+                "flex items-center text-xs sm:text-sm lg:text-sm font-medium transition-colors px-2 lg:px-3 py-1 rounded-md",
                 currentPath === item.href
-                  ? "text-blue-600 dark:text-yellow-300" // High contrast active link
-                  : "text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-yellow-300", // Better contrast for inactive links
+                  ? "text-blue-600 dark:text-yellow-300 bg-blue-50 dark:bg-opacity-10" // High contrast active link
+                  : "text-gray-600 hover:text-blue-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:text-yellow-300 dark:hover:bg-gray-800", // Better contrast for inactive links
               )}
             >
-              {item.icon}
-              {item.name}
+              <span className="hidden lg:inline">{item.icon}</span>
+              <span className="hidden sm:inline">{item.name}</span>
+              <span className="sm:hidden">{item.icon}</span>
             </Link>
           ))}
         </nav>
 
         {/* Mobile Menu Button */}
-        <Button variant="ghost" size="icon" className="md:hidden" onClick={toggleMenu} aria-label="Toggle menu">
+        <Button variant="ghost" size="icon" className="md:hidden h-9 w-9 sm:h-10 sm:w-10" onClick={toggleMenu} aria-label="Toggle menu">
           {isMenuOpen ? (
-            <X className="h-6 w-6 text-gray-600 dark:text-white" />
+            <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-white" />
           ) : (
-            <Menu className="h-6 w-6 text-gray-600 dark:text-white" />
+            <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600 dark:text-white" />
           )}
         </Button>
       </div>
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-16 z-50 grid h-[calc(100vh-4rem)] grid-flow-row auto-rows-max overflow-auto p-6 pb-32 shadow-md animate-in slide-in-from-top-1 md:hidden bg-white dark:bg-gray-900">
-          <div className="relative z-20 grid gap-6 rounded-md p-4">
-            <nav className="grid grid-flow-row auto-rows-max text-sm">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center py-3 text-sm font-medium transition-colors",
-                    currentPath === item.href
-                      ? "text-blue-600 dark:text-yellow-300" // High contrast active link
-                      : "text-gray-600 hover:text-blue-600 dark:text-gray-200 dark:hover:text-yellow-300", // Better contrast for inactive links
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.icon}
-                  {item.name}
-                </Link>
-              ))}
-            </nav>
-          </div>
+        <div className="fixed inset-0 top-14 sm:top-16 z-40 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] overflow-auto p-4 sm:p-6 pb-32 shadow-md animate-in slide-in-from-top-1 md:hidden bg-white dark:bg-gray-900">
+          <nav className="space-y-2">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-3 text-sm sm:text-base font-medium transition-colors rounded-lg",
+                  currentPath === item.href
+                    ? "text-blue-600 dark:text-yellow-300 bg-blue-50 dark:bg-opacity-10" // High contrast active link
+                    : "text-gray-600 hover:text-blue-600 hover:bg-gray-100 dark:text-gray-200 dark:hover:text-yellow-300 dark:hover:bg-gray-800", // Better contrast for inactive links
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.icon}
+                {item.name}
+              </Link>
+            ))}
+          </nav>
         </div>
       )}
     </header>

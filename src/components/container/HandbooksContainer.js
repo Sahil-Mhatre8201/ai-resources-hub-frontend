@@ -28,12 +28,12 @@ const HandbooksContainer = () => {
   }, [page]);
 
   if (loading) {
-    return <h3 className="text-center text-xl font-medium">Loading...</h3>;
+    return <h3 className="text-center text-base sm:text-lg md:text-xl font-medium">Loading...</h3>;
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-bold">Latest AI handbooks</h2>
+    <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">Latest AI Handbooks</h2>
       <div className="flex-1">
         <SearchResultsList results={data} />
       </div>

@@ -23,9 +23,11 @@ const SearchResultsList = ({ results }) => {
   }
 
   return (
-    <div className="search-results-list">
-      <h2 className="text-2xl font-bold mb-4">Search Results</h2>
-      {(results || [])?.map(renderResultCard)}
+    <div className="search-results-list w-full">
+      <h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">Search Results</h2>
+      <div className="space-y-3 sm:space-y-4">
+        {(results || [])?.map(renderResultCard)}
+      </div>
     </div>
   )
 }

@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }) {
       <Header />
 
       {/* MAIN CONTENT */}
-      <div className="w-4/5 mx-auto">
+      <div className="w-full px-3 sm:px-4 md:px-6 lg:px-8 max-w-7xl mx-auto py-4 sm:py-6 md:py-8">
         <Component {...pageProps} />
       </div>
 

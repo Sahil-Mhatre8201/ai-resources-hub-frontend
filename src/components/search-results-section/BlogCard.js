@@ -116,12 +116,12 @@ const BlogCard = ({ blog }) => {
   }
 
   return (
-    <Card className="mb-4 relative">
-      <CardHeader className="pb-2">
+    <Card className="mb-3 sm:mb-4 relative">
+      <CardHeader className="pb-2 sm:pb-3">
         <div>
-          <Badge className="mb-2 bg-green-500 text-white">Blog</Badge>
-          <CardTitle className="text-lg">
-            <a href={blog.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          <Badge className="mb-2 bg-green-500 text-white text-xs sm:text-sm">Blog</Badge>
+          <CardTitle className="text-base sm:text-lg">
+            <a href={blog.url} target="_blank" rel="noopener noreferrer" className="hover:underline break-words">
               {blog.title}
             </a>
           </CardTitle>
@@ -129,11 +129,11 @@ const BlogCard = ({ blog }) => {
       </CardHeader>
       <CardContent>
         
-        <p className="text-sm text-muted-foreground mb-4">{truncateSummary(blog.description)}</p>
-        <div className="flex flex-wrap gap-2">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">{truncateSummary(blog.description)}</p>
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {blog.categories &&
-            blog.categories.map((category) => (
-              <Badge key={category} variant="secondary">
+            blog.categories.slice(0, 4).map((category) => (
+              <Badge key={category} variant="secondary" className="text-xs sm:text-sm">
                 {category}
               </Badge>
             ))}
@@ -142,12 +142,12 @@ const BlogCard = ({ blog }) => {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute bottom-4 right-4 rounded-full"
+          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 rounded-full h-8 w-8 sm:h-9 sm:w-9"
           onClick={handleBookmarkToggle}
           disabled={isLoading}
         >
           <HeartIcon
-            className={`h-5 w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
+            className={`h-4 w-4 sm:h-5 sm:w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
           />
           <span className="sr-only">{isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}</span>
         </Button>

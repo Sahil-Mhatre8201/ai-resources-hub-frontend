@@ -116,33 +116,33 @@ const ArxivPaperCard = ({ paper }) => {
 
 
   return (
-    <Card className="mb-4 relative">
-      <CardHeader className="pb-2">
+    <Card className="mb-3 sm:mb-4 relative">
+      <CardHeader className="pb-2 sm:pb-3">
         <div>
-          <Badge className="mb-2 bg-green-500 text-white">Research Paper</Badge>
-          <CardTitle className="text-lg">
-            <a href={paper.link} target="_blank" rel="noopener noreferrer" className="hover:underline">
+          <Badge className="mb-2 bg-green-500 text-white text-xs sm:text-sm">Research Paper</Badge>
+          <CardTitle className="text-base sm:text-lg">
+            <a href={paper.link} target="_blank" rel="noopener noreferrer" className="hover:underline break-words">
               {paper.title}
             </a>
           </CardTitle>
         </div>
       </CardHeader>
       <CardContent>
-        <div className="flex items-center space-x-4 mb-2">
-          <div className="flex items-center">
-            <UsersIcon className="w-4 h-4 mr-1" />
-            <span className="text-sm">{paper.authors.join(", ")}</span>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2 sm:mb-3">
+          <div className="flex items-center text-xs sm:text-sm">
+            <UsersIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
+            <span className="line-clamp-1">{paper.authors.slice(0, 2).join(", ")}{paper.authors.length > 2 ? "..." : ""}</span>
           </div>
-          <div className="flex items-center">
-            <CalendarIcon className="w-4 h-4 mr-1" />
-            <span className="text-sm">{new Date(paper.published_date).toLocaleDateString()}</span>
+          <div className="flex items-center text-xs sm:text-sm">
+            <CalendarIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1 flex-shrink-0" />
+            <span>{new Date(paper.published_date).toLocaleDateString()}</span>
           </div>
         </div>
-        <p className="text-sm text-muted-foreground mb-4">{truncateSummary(paper.summary)}</p>
-        <div className="flex flex-wrap gap-2">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">{truncateSummary(paper.summary)}</p>
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {paper.categories &&
-            paper.categories.map((category) => (
-              <Badge key={category} variant="secondary">
+            paper.categories.slice(0, 4).map((category) => (
+              <Badge key={category} variant="secondary" className="text-xs sm:text-sm">
                 {category}
               </Badge>
             ))}
@@ -150,12 +150,12 @@ const ArxivPaperCard = ({ paper }) => {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute bottom-4 right-4 rounded-full"
+          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 rounded-full h-8 w-8 sm:h-9 sm:w-9"
           onClick={handleBookmarkToggle}
           disabled={isLoading}
         >
           <HeartIcon
-            className={`h-5 w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
+            className={`h-4 w-4 sm:h-5 sm:w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
           />
           <span className="sr-only">{isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}</span>
         </Button>

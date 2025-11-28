@@ -67,9 +67,9 @@ const SearchResultsSection = ({ data = [] }) => {
 
   return (
     <>
-        <div className="flex gap-8">
-        <div className="w-64 space-y-4">
-            <h3 className="text-lg font-semibold mb-4">Filters</h3>
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
+        <div className="w-full lg:w-64 space-y-4">
+            <h3 className="text-base sm:text-lg font-semibold mb-4">Filters</h3>
             <div className="space-y-2">
             <div className="flex items-center space-x-2">
                 <Checkbox
@@ -77,7 +77,7 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.github}
                 onCheckedChange={() => handleFilterChange("github")}
                 />
-                <Label htmlFor="github">GitHub</Label>
+                <Label htmlFor="github" className="text-sm sm:text-base cursor-pointer">GitHub</Label>
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
@@ -85,7 +85,7 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.research_papers}
                 onCheckedChange={() => handleFilterChange("research_papers")}
                 />
-                <Label htmlFor="researchPapers">Research Papers</Label>
+                <Label htmlFor="researchPapers" className="text-sm sm:text-base cursor-pointer">Research Papers</Label>
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
@@ -93,7 +93,7 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.blogs}
                 onCheckedChange={() => handleFilterChange("blogs")}
                 />
-                <Label htmlFor="blogs">Blogs</Label>
+                <Label htmlFor="blogs" className="text-sm sm:text-base cursor-pointer">Blogs</Label>
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
@@ -101,7 +101,7 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.courses}
                 onCheckedChange={() => handleFilterChange("courses")}
                 />
-                <Label htmlFor="courses">Courses</Label>
+                <Label htmlFor="courses" className="text-sm sm:text-base cursor-pointer">Courses</Label>
             </div>
             <div className="flex items-center space-x-2">
                 <Checkbox
@@ -109,11 +109,11 @@ const SearchResultsSection = ({ data = [] }) => {
                 checked={filters.handbook}
                 onCheckedChange={() => handleFilterChange("handbook")}
                 />
-                <Label htmlFor="handbooks">Handbooks</Label>
+                <Label htmlFor="handbooks" className="text-sm sm:text-base cursor-pointer">Handbooks</Label>
             </div>
             </div>
             <div className="flex items-center space-x-2">
-            <Button type="button" className="w-full" onClick={handleApplyFilters}>
+            <Button type="button" className="w-full text-sm sm:text-base" onClick={handleApplyFilters}>
                 {loading ? (
                 <>
                     <Loader2 className="animate-spin mr-2" />
@@ -129,12 +129,13 @@ const SearchResultsSection = ({ data = [] }) => {
             <SearchResultsList results={data} />
         </div>
         </div>
-        <Pagination className="flex justify-center">
+        <Pagination className="flex justify-center mt-6 sm:mt-8">
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
               onClick={() => setPage((prev) => Math.max(1, prev - 1))}
               disabled={page === 1}
+              className="text-xs sm:text-sm"
             />
           </PaginationItem>
           <PaginationItem>

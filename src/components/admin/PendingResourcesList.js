@@ -140,9 +140,9 @@ const PendingResourcesList = () => {
     return (
       <Alert variant="destructive" className="mb-6">
         <AlertCircle className="h-4 w-4" />
-        <AlertDescription>
+        <AlertDescription className="text-xs sm:text-sm">
           Error loading pending resources: {error}
-          <Button variant="outline" size="sm" className="ml-4" onClick={fetchPendingResources}>
+          <Button variant="outline" size="sm" className="ml-2 sm:ml-4 text-xs sm:text-sm" onClick={fetchPendingResources}>
             Retry
           </Button>
         </AlertDescription>
@@ -153,8 +153,8 @@ const PendingResourcesList = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>Pending Resources</CardTitle>
-        <CardDescription>Review and approve user-submitted resources</CardDescription>
+        <CardTitle className="text-lg sm:text-2xl">Pending Resources</CardTitle>
+        <CardDescription className="text-xs sm:text-sm">Review and approve user-submitted resources</CardDescription>
       </CardHeader>
       <CardContent>
         {isLoading ? (
@@ -170,49 +170,49 @@ const PendingResourcesList = () => {
         ) : resources.length === 0 ? (
           // Empty state
           <div className="flex flex-col items-center justify-center py-10 text-center">
-            <CheckCircle className="h-12 w-12 text-green-500 mb-4" />
-            <p className="text-muted-foreground">No pending resources to review</p>
-            <p className="text-sm text-muted-foreground mt-1">All caught up! Check back later for new submissions.</p>
+            <CheckCircle className="h-10 w-10 sm:h-12 sm:w-12 text-green-500 mb-4" />
+            <p className="text-sm sm:text-base text-muted-foreground">No pending resources to review</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">All caught up! Check back later for new submissions.</p>
           </div>
         ) : (
           // Resources list
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {resources.map((resource) => (
               <Card key={resource.id} className="overflow-hidden">
-                <div className="p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge className={getResourceColor(resource.resource_type)}>
-                      <span className="flex items-center">
+                <div className="p-3 sm:p-4">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 mb-3 sm:mb-2">
+                    <Badge className={`${getResourceColor(resource.resource_type)} text-xs sm:text-sm`}>
+                      <span className="flex items-center gap-1">
                         {getResourceIcon(resource.resource_type)}
-                        <span className="ml-1">{resource.resource_type}</span>
+                        <span className="hidden sm:inline">{resource.resource_type}</span>
                       </span>
                     </Badge>
-                    <Badge variant="outline" className="ml-auto">
+                    <Badge variant="outline" className="text-xs sm:text-sm">
                       User ID: {resource.user_id}
                     </Badge>
                   </div>
 
-                  <h3 className="font-medium text-lg mb-2">{resource.title}</h3>
+                  <h3 className="font-medium text-sm sm:text-lg mb-2 line-clamp-2">{resource.title}</h3>
 
-                  {resource.description && <p className="text-muted-foreground text-sm mb-4">{resource.description}</p>}
+                  {resource.description && <p className="text-muted-foreground text-xs sm:text-sm mb-4 line-clamp-2 sm:line-clamp-3">{resource.description}</p>}
 
-                  <div className="flex justify-end gap-2 mt-2">
+                  <div className="flex flex-col sm:flex-row justify-end gap-2 mt-4 sm:mt-2">
                     <Button
                       variant="outline"
-                      className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700"
+                      className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 text-xs sm:text-sm py-2 sm:py-3 w-full sm:w-auto"
                       onClick={() => updateResourceStatus(resource.id, "rejected")}
                       disabled={processingIds.includes(resource.id)}
                     >
-                      <XCircle className="mr-2 h-4 w-4" />
+                      <XCircle className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                       Reject
                     </Button>
                     <Button
                       variant="outline"
-                      className="border-green-200 text-green-600 hover:bg-green-50 hover:text-green-700"
+                      className="border-green-200 text-green-600 hover:bg-green-50 hover:text-green-700 text-xs sm:text-sm py-2 sm:py-3 w-full sm:w-auto"
                       onClick={() => updateResourceStatus(resource.id, "approved")}
                       disabled={processingIds.includes(resource.id)}
                     >
-                      <CheckCircle className="mr-2 h-4 w-4" />
+                      <CheckCircle className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
                       Approve
                     </Button>
                   </div>
@@ -225,7 +225,7 @@ const PendingResourcesList = () => {
         {/* Refresh button */}
         {!isLoading && (
           <div className="flex justify-center mt-6">
-            <Button variant="outline" onClick={fetchPendingResources}>
+            <Button variant="outline" onClick={fetchPendingResources} className="text-xs sm:text-sm">
               Refresh List
             </Button>
           </div>

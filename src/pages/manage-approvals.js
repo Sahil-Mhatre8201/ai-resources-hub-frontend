@@ -32,11 +32,11 @@ export default function PendingResourcesPage() {
 
 
   return (
-    <div className="container mx-auto py-8 px-4">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+    <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-3 sm:gap-4">
         <div>
-          <h1 className="text-3xl font-bold">Pending Resources</h1>
-          <p className="text-muted-foreground mt-1">Review and manage user-submitted resources</p>
+          <h1 className="text-2xl sm:text-3xl font-bold">Pending Resources</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">Review and manage user-submitted resources</p>
         </div>
 
       </div>

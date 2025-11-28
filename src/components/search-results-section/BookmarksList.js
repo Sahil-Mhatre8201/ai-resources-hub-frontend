@@ -172,8 +172,8 @@ const BookmarksList = () => {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col items-center justify-center py-10">
-            <p className="text-muted-foreground mb-4">Failed to load bookmarks: {error}</p>
-            <Button onClick={() => fetchBookmarks()}>Try Again</Button>
+            <p className="text-muted-foreground text-sm sm:text-base mb-4">Failed to load bookmarks: {error}</p>
+            <Button onClick={() => fetchBookmarks()} className="text-sm sm:text-base">Try Again</Button>
           </div>
         </CardContent>
       </Card>
@@ -183,11 +183,11 @@ const BookmarksList = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle className="flex items-center">
+        <CardTitle className="flex items-center text-lg sm:text-2xl">
           <BookmarkIcon className="mr-2 h-5 w-5" />
           Bookmarks
         </CardTitle>
-        <CardDescription>Your saved resources</CardDescription>
+        <CardDescription className="text-sm sm:text-base">Your saved resources</CardDescription>
       </CardHeader>
       <CardContent>
         {isLoading && !bookmarks.length ? (
@@ -203,23 +203,23 @@ const BookmarksList = () => {
         ) : bookmarks.length === 0 ? (
           // Empty state
           <div className="flex flex-col items-center justify-center py-10">
-            <BookmarkIcon className="h-12 w-12 text-muted-foreground mb-4" />
-            <p className="text-muted-foreground">You don't have any bookmarks yet</p>
+            <BookmarkIcon className="h-10 w-10 sm:h-12 sm:w-12 text-muted-foreground mb-4" />
+            <p className="text-muted-foreground text-sm sm:text-base">You don't have any bookmarks yet</p>
           </div>
         ) : (
           // Bookmarks list with tabs
           <Tabs defaultValue={resourceTypes[0] || "all"}>
-            <TabsList className="mb-4">
-              <TabsTrigger value="all">All</TabsTrigger>
+            <TabsList className="mb-4 flex-wrap grid grid-cols-2 sm:flex h-auto">
+              <TabsTrigger value="all" className="text-xs sm:text-sm">All</TabsTrigger>
               {resourceTypes.map((type) => (
-                <TabsTrigger key={type} value={type}>
+                <TabsTrigger key={type} value={type} className="text-xs sm:text-sm">
                   {type.charAt(0).toUpperCase() + type.slice(1)}
                 </TabsTrigger>
               ))}
             </TabsList>
 
             <TabsContent value="all">
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {bookmarks.map((bookmark) => (
                   <BookmarkCard
                     key={bookmark.id}
@@ -235,7 +235,7 @@ const BookmarksList = () => {
 
             {resourceTypes.map((type) => (
               <TabsContent key={type} value={type}>
-                <div className="space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   {groupedBookmarks[type].map((bookmark) => (
                     <BookmarkCard
                       key={bookmark.id}
@@ -255,7 +255,7 @@ const BookmarksList = () => {
         {/* Load more button */}
         {hasMore && (
           <div className="flex justify-center mt-6">
-            <Button variant="outline" onClick={loadMore} disabled={isLoading}>
+            <Button variant="outline" onClick={loadMore} disabled={isLoading} className="text-xs sm:text-sm">
               {isLoading ? "Loading..." : "Load More"}
             </Button>
           </div>
@@ -269,38 +269,38 @@ const BookmarksList = () => {
 const BookmarkCard = ({ bookmark, onDelete, getResourceIcon, getResourceColor, truncateText }) => {
   return (
     <Card className="overflow-hidden">
-      <div className="flex justify-between items-start p-4">
-        <div className="flex-1">
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-3 sm:gap-4 p-3 sm:p-4">
+        <div className="flex-1 w-full">
           <div className="flex items-center gap-2 mb-2">
-            <Badge className={`${getResourceColor(bookmark.resource_type)}`}>
-              <span className="flex items-center">
+            <Badge className={`${getResourceColor(bookmark.resource_type)} text-xs sm:text-sm`}>
+              <span className="flex items-center gap-1">
                 {getResourceIcon(bookmark.resource_type)}
-                <span className="ml-1">{bookmark.resource_type}</span>
+                <span className="hidden sm:inline">{bookmark.resource_type}</span>
               </span>
             </Badge>
           </div>
 
-          <h3 className="font-medium text-lg mb-1">
+          <h3 className="font-medium text-sm sm:text-lg mb-1 line-clamp-2">
             <Link
               href={bookmark.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:underline flex items-center"
+              className="hover:underline flex items-center gap-1"
             >
               {truncateText(bookmark.title, 100)}
-              <ExternalLinkIcon className="h-3 w-3 ml-1" />
+              <ExternalLinkIcon className="h-3 w-3 flex-shrink-0" />
             </Link>
           </h3>
 
           {bookmark.description && (
-            <p className="text-muted-foreground text-sm">{truncateText(bookmark.description, 200)}</p>
+            <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">{truncateText(bookmark.description, 200)}</p>
           )}
         </div>
 
         <Button
           variant="ghost"
           size="icon"
-          className="text-muted-foreground hover:text-destructive"
+          className="text-muted-foreground hover:text-destructive h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0"
           onClick={() => onDelete(bookmark.id)}
           title="Remove bookmark"
         >

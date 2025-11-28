@@ -119,45 +119,45 @@ const RepositoryCard = ({ repo }) => {
   }
 
   return (
-    <Card onClick={handleClick} className="mb-4 relative cursor-pointer hover:shadow-md transition-shadow">
-      <CardHeader className="pb-2">
-        <div className="flex justify-between items-start">
-          <div>
-            <Badge className="mb-2 bg-green-500 text-white">GitHub</Badge>
-            <CardTitle className="text-lg">
+    <Card onClick={handleClick} className="mb-3 sm:mb-4 relative cursor-pointer hover:shadow-md transition-shadow">
+      <CardHeader className="pb-2 sm:pb-3">
+        <div className="flex flex-col sm:flex-row justify-between items-start gap-2 sm:gap-3">
+          <div className="flex-1">
+            <Badge className="mb-2 bg-green-500 text-white text-xs sm:text-sm">GitHub</Badge>
+            <CardTitle className="text-base sm:text-lg">
               <a
                 href={repo.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+                className="hover:underline break-words"
                 onClick={(e) => e.stopPropagation()} // Prevent card click when clicking the link
               >
                 {repo.full_name}
               </a>
             </CardTitle>
           </div>
-          <Badge variant="secondary" className="w-max">
+          <Badge variant="secondary" className="w-max text-xs sm:text-sm flex-shrink-0">
             {repo.language}
           </Badge>
         </div>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-2 sm:line-clamp-3">
           {repo.description
             ? repo.description.length > 350
               ? `${repo.description.slice(0, 350)}...`
               : repo.description
             : "No description available"}
         </p>
-        <div className="flex items-center space-x-2 mb-4">
-          <StarIcon className="w-4 h-4 text-yellow-400" />
-          <span>{repo.stars.toLocaleString()}</span>
+        <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+          <StarIcon className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
+          <span className="text-xs sm:text-sm">{repo.stars.toLocaleString()}</span>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1 sm:gap-2">
           {repo.contributors.slice(0, 5).map((contributor) => (
-            <Avatar key={contributor.username} className="w-8 h-8">
+            <Avatar key={contributor.username} className="w-6 h-6 sm:w-8 sm:h-8">
               <AvatarImage src={contributor.avatar_url} alt={contributor.username} />
-              <AvatarFallback>{contributor.username.slice(0, 2).toUpperCase()}</AvatarFallback>
+              <AvatarFallback className="text-xs">{contributor.username.slice(0, 2).toUpperCase()}</AvatarFallback>
             </Avatar>
           ))}
         </div>
@@ -166,12 +166,12 @@ const RepositoryCard = ({ repo }) => {
         <Button
           variant="ghost"
           size="icon"
-          className="absolute bottom-4 right-4 rounded-full"
+          className="absolute bottom-3 right-3 sm:bottom-4 sm:right-4 rounded-full h-8 w-8 sm:h-9 sm:w-9"
           onClick={handleBookmarkToggle}
           disabled={isLoading}
         >
           <HeartIcon
-            className={`h-5 w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
+            className={`h-4 w-4 sm:h-5 sm:w-5 ${isBookmarked ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-500"}`}
           />
           <span className="sr-only">{isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}</span>
         </Button>

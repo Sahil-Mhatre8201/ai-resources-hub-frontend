@@ -41,50 +41,50 @@ const ChatMessage = ({ message, isUser, isStreaming }) => {
   const processedMessage = isUser ? message : processMessage(message)
 
   return (
-    <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-4`}>
+    <div className={`flex ${isUser ? "justify-end" : "justify-start"} mb-3 sm:mb-4`}>
       {!isUser && (
-        <Avatar className="h-8 w-8 mr-2">
+        <Avatar className="h-6 w-6 sm:h-8 sm:w-8 mr-2 flex-shrink-0">
           <AvatarImage src="/bot-avatar.png" alt="AI Assistant" />
-          <AvatarFallback>AI</AvatarFallback>
+          <AvatarFallback className="text-xs">AI</AvatarFallback>
         </Avatar>
       )}
       <div
-        className={`px-4 py-2 rounded-lg max-w-[80%] ${isUser ? "bg-primary text-white" : "bg-gray-100 text-gray-900"}`}
+        className={`px-3 sm:px-4 py-2 rounded-lg max-w-[85%] sm:max-w-[80%] ${isUser ? "bg-primary text-white" : "bg-gray-100 text-gray-900"}`}
       >
         {isUser ? (
-          <p className="text-sm whitespace-pre-wrap">{message}</p>
+          <p className="text-xs sm:text-sm whitespace-pre-wrap">{message}</p>
         ) : (
-          <div className="text-sm markdown-content">
+          <div className="text-xs sm:text-sm markdown-content">
             <ReactMarkdown
               components={{
                 a: ({ node, ...props }) => (
                   <a {...props} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline" />
                 ),
-                p: ({ node, ...props }) => <p {...props} className="mb-2" />,
-                h1: ({ node, ...props }) => <h1 {...props} className="text-xl font-bold my-2" />,
-                h2: ({ node, ...props }) => <h2 {...props} className="text-lg font-bold my-2" />,
-                h3: ({ node, ...props }) => <h3 {...props} className="text-md font-bold my-2" />,
-                ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-5 my-2" />,
-                ol: ({ node, ...props }) => <ol {...props} className="list-decimal pl-5 my-2" />,
-                li: ({ node, ...props }) => <li {...props} className="mb-1" />,
+                p: ({ node, ...props }) => <p {...props} className="mb-1 sm:mb-2" />,
+                h1: ({ node, ...props }) => <h1 {...props} className="text-base sm:text-lg font-bold my-1 sm:my-2" />,
+                h2: ({ node, ...props }) => <h2 {...props} className="text-sm sm:text-base font-bold my-1 sm:my-2" />,
+                h3: ({ node, ...props }) => <h3 {...props} className="text-xs sm:text-sm font-bold my-1 sm:my-2" />,
+                ul: ({ node, ...props }) => <ul {...props} className="list-disc pl-4 sm:pl-5 my-1 sm:my-2" />,
+                ol: ({ node, ...props }) => <ol {...props} className="list-decimal pl-4 sm:pl-5 my-1 sm:my-2" />,
+                li: ({ node, ...props }) => <li {...props} className="mb-0.5 sm:mb-1" />,
                 strong: ({ node, ...props }) => <strong {...props} className="font-bold" />,
                 em: ({ node, ...props }) => <em {...props} className="italic" />,
-                code: ({ node, ...props }) => <code {...props} className="bg-gray-200 px-1 rounded" />,
+                code: ({ node, ...props }) => <code {...props} className="bg-gray-200 px-1 rounded text-xs" />,
                 pre: ({ node, ...props }) => (
-                  <pre {...props} className="bg-gray-200 p-2 rounded my-2 overflow-x-auto" />
+                  <pre {...props} className="bg-gray-200 p-2 rounded my-1 sm:my-2 overflow-x-auto text-xs" />
                 ),
               }}
             >
               {processedMessage}
             </ReactMarkdown>
-            {isStreaming && <span className="inline-block w-1.5 h-4 ml-1 bg-gray-400 animate-pulse"></span>}
+            {isStreaming && <span className="inline-block w-1 h-3 sm:w-1.5 sm:h-4 ml-1 bg-gray-400 animate-pulse"></span>}
           </div>
         )}
       </div>
       {isUser && (
-        <Avatar className="h-8 w-8 ml-2">
+        <Avatar className="h-6 w-6 sm:h-8 sm:w-8 ml-2 flex-shrink-0">
           <AvatarImage src="/user-avatar.png" alt="User" />
-          <AvatarFallback>You</AvatarFallback>
+          <AvatarFallback className="text-xs">You</AvatarFallback>
         </Avatar>
       )}
     </div>

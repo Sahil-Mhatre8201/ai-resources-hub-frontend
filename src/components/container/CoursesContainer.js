@@ -28,29 +28,31 @@ const CoursesContainer = () => {
   }, [page]);
 
   if (loading) {
-    return <h3 className="text-center text-xl font-medium">Loading...</h3>;
+    return <h3 className="text-center text-base sm:text-lg md:text-xl font-medium">Loading...</h3>;
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <h2 className="text-2xl font-bold">AI Courses</h2>
+    <div className="w-full px-3 sm:px-4 md:px-6 py-4 sm:py-6 md:py-8 space-y-4 sm:space-y-6">
+      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold">AI Courses</h2>
       <div className="flex-1">
         <SearchResultsList results={data} />
       </div>
 
       {/* Pagination Controls */}
-      <div className="flex justify-center space-x-4 mt-6">
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4 mt-6">
         <Button 
           onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
           disabled={page === 1}
           variant="outline"
+          className="w-full sm:w-auto text-xs sm:text-sm"
         >
           Prev
         </Button>
-        <span className="text-lg font-medium">Page {page}</span>
+        <span className="text-base sm:text-lg font-medium">Page {page}</span>
         <Button 
           onClick={() => setPage((prev) => prev + 1)}
           variant="outline"
+          className="w-full sm:w-auto text-xs sm:text-sm"
         >
           Next
         </Button>

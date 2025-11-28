@@ -51,54 +51,54 @@ export default function UploadResourceForm() {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-gray-50 rounded-2xl shadow-lg">
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4">Upload a Resource</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="w-full max-w-lg mx-auto px-3 sm:px-4 py-4 sm:py-6 bg-gray-50 rounded-lg sm:rounded-2xl shadow-lg">
+      <h2 className="text-lg sm:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">Upload a Resource</h2>
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
         {/* Title */}
         <div>
-          <Label htmlFor="title" className="text-gray-800">Title</Label>
+          <Label htmlFor="title" className="text-sm sm:text-base text-gray-800">Title</Label>
           <Input
             id="title"
             name="title"
             value={formData.title}
             onChange={handleChange}
-            className="text-gray-800"
+            className="text-sm sm:text-base text-gray-800 px-3 sm:px-4 py-2 sm:py-3"
             required
           />
         </div>
 
         {/* Description */}
         <div>
-          <Label htmlFor="description" className="text-gray-800">Description</Label>
+          <Label htmlFor="description" className="text-sm sm:text-base text-gray-800">Description</Label>
           <Textarea
             id="description"
             name="description"
             value={formData.description}
             onChange={handleChange}
-            className="text-gray-800"
+            className="text-sm sm:text-base text-gray-800 px-3 sm:px-4 py-2 sm:py-3 min-h-24 sm:min-h-28"
             required
           />
         </div>
 
         {/* URL */}
         <div>
-          <Label htmlFor="url" className="text-gray-800">URL</Label>
+          <Label htmlFor="url" className="text-sm sm:text-base text-gray-800">URL</Label>
           <Input
             type="url"
             id="url"
             name="url"
             value={formData.url}
             onChange={handleChange}
-            className="text-gray-800"
+            className="text-sm sm:text-base text-gray-800 px-3 sm:px-4 py-2 sm:py-3"
             required
           />
         </div>
 
         {/* Resource Type */}
         <div>
-          <Label className="text-gray-800">Resource Type</Label>
+          <Label className="text-sm sm:text-base text-gray-800">Resource Type</Label>
           <Select onValueChange={(value) => setFormData({ ...formData, resource_type: value })} required>
-            <SelectTrigger className="text-gray-800">
+            <SelectTrigger className="text-sm sm:text-base text-gray-800 px-3 sm:px-4 py-2 sm:py-3">
               <SelectValue placeholder="Select Type" className="text-gray-800" />
             </SelectTrigger>
             <SelectContent>
@@ -111,7 +111,7 @@ export default function UploadResourceForm() {
         </div>
 
         {/* Submit Button */}
-        <Button type="submit" className="w-full">
+        <Button type="submit" className="w-full text-sm sm:text-base py-2 sm:py-3">
           Submit Resource
         </Button>
       </form>
