@@ -140,7 +140,7 @@ const CommunityResourcesList = () => {
               Be the first to contribute a resource to our community collection!
             </p>
             <Button asChild>
-              <Link href="/submit-resource">Submit a Resource</Link>
+              <Link href="/upload-resource">Submit a Resource</Link>
             </Button>
           </CardContent>
         </Card>
