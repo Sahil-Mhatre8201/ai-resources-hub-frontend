@@ -13,7 +13,7 @@ export default function Document() {
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </Head>
-      <body className="antialiased touch-none">
+      <body className="antialiased">
         <Main />
         <NextScript />
       </body>
