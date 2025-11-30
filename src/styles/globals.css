@@ -7,6 +7,28 @@ html {
   touch-action: manipulation;
 }
 
+/* Safe area insets for notched devices (iOS, modern Android) */
+:root {
+  --safe-area-inset-top: env(safe-area-inset-top);
+  --safe-area-inset-right: env(safe-area-inset-right);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-left: env(safe-area-inset-left);
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Apply safe-area padding when the browser supports it and when running as PWA */
+@supports (padding: env(safe-area-inset-top)) {
+  @media (display-mode: standalone), (display-mode: fullscreen) {
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-right: env(safe-area-inset-right);
+      padding-bottom: env(safe-area-inset-bottom);
+      padding-left: env(safe-area-inset-left);
+    }
+  }
+}
+
 input[type="text"],
 input[type="search"],
 input[type="email"],
@@ -26,11 +48,6 @@ input[type="number"]:focus,
 textarea:focus,
 select:focus {
   font-size: 16px !important;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
 /* @media (prefers-color-scheme: dark) {
