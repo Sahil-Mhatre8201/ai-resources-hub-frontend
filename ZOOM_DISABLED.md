@@ -13,7 +13,7 @@ Added comprehensive viewport meta tag to prevent pinch zoom:
 - `maximum-scale=1` - Prevents user zoom
 - `user-scalable=no` - Disables pinch zoom on touch devices
 - `viewport-fit=cover` - Ensures content respects notches/safe areas
-- Added `touch-none` class to body
+- Previously the `touch-none` class had been added to `body` but was later removed because it blocked scrolling; input-level `touch-action` rules are retained
 
 ### 2. **Search Input Zoom Prevention** 
 
@@ -126,7 +126,7 @@ The viewport meta tag with `user-scalable=no` and `maximum-scale=1` disables the
 
 | File | Changes |
 |------|---------|
-| `src/pages/_document.js` | Added viewport meta tag + touch-none class |
+| `src/pages/_document.js` | Added viewport meta tag; previously applied `touch-none` class removed (blocked scrolling) |
 | `src/components/container/index.js` | Added font-size 16px + onFocus handler |
 | `src/components/github/GithubExplorerContainer.js` | Added font-size 16px + onFocus handler |
 | `src/styles/globals.css` | Added global CSS rules for inputs |

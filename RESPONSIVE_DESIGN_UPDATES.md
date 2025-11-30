@@ -1,7 +1,7 @@
 # Responsive Design & Mobile Optimization - Summary
 
 ## Overview
-The entire AI Resources Hub frontend has been refactored to be fully responsive and mobile-friendly. All components now use Tailwind CSS responsive breakpoints (sm:, md:, lg:) to provide an optimal viewing experience across all device sizes.
+The entire Spartan AI Hub frontend has been refactored to be fully responsive and mobile-friendly. All components now use Tailwind CSS responsive breakpoints (sm:, md:, lg:) to provide an optimal viewing experience across all device sizes.
 
 ---
 
