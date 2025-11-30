@@ -34,7 +34,7 @@ export default function InstallPrompt() {
       style={{
         position: "fixed",
         bottom: "20px",
-        right: "20px",
+        left: "20px",
         padding: "12px 18px",
         background: "black",
         color: "white",
